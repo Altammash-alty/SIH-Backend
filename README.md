@@ -32,8 +32,8 @@ This system provides early warning capabilities for water-borne disease outbreak
 
 ### 1. Clone and Setup
 ```bash
-git clone <repository-url>
-cd SIH_Backend
+git clone https://github.com/Altammash-alty/SIH-Backend.git
+cd SIH-Backend
 ```
 
 ### 2. Environment Configuration
