@@ -1,0 +1,11 @@
+report_id,user_id,location_lat,location_lon,location_address,fever,diarrhea,vomiting,nausea,abdominal_pain,dehydration,symptom_severity,other_symptoms,report_source,report_timestamp,article_url,confidence
+SYNTH_007,USER_007,25.489101690945535,93.67382889932031,Synthetic Location 7,False,True,True,False,False,False,4,,synthetic,2025-09-10 01:40:31.049571,,0.5
+SYNTH_010,USER_010,27.141553836088725,92.46641104868137,Synthetic Location 10,False,True,False,False,False,False,4,,synthetic,2025-08-23 01:40:31.049571,,0.5
+SYNTH_014,USER_014,27.30230658181464,90.46524357328343,Synthetic Location 14,False,True,False,False,False,False,2,,synthetic,2025-08-27 01:40:31.049571,,0.5
+SYNTH_018,USER_018,24.47399050072942,91.99499378603284,Synthetic Location 18,False,False,True,False,False,False,1,,synthetic,2025-09-20 01:40:31.049571,,0.5
+SYNTH_020,USER_020,24.12205783807947,92.02129193028819,Synthetic Location 20,False,False,False,False,False,False,3,,synthetic,2025-09-06 01:40:31.050569,,0.5
+SYNTH_022,USER_022,24.904136639952455,93.21381555518936,Synthetic Location 22,True,False,False,True,False,False,4,,synthetic,2025-09-02 01:40:31.050919,,0.5
+SYNTH_028,USER_028,25.247798754665425,93.83411983216415,Synthetic Location 28,True,True,False,False,False,False,5,,synthetic,2025-09-11 01:40:31.050919,,0.5
+SYNTH_038,USER_038,24.53176684428071,93.96206752099106,Synthetic Location 38,False,False,False,False,True,False,4,,synthetic,2025-09-09 01:40:31.051494,,0.5
+SYNTH_042,USER_042,26.65841747916766,91.15355402947988,Synthetic Location 42,False,False,False,False,False,False,2,,synthetic,2025-09-21 01:40:31.051494,,0.5
+SYNTH_050,USER_050,27.97960315391203,90.14933745286824,Synthetic Location 50,False,False,False,False,True,False,5,,synthetic,2025-09-03 01:40:31.052519,,0.5

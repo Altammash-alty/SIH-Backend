@@ -1,0 +1,60 @@
+# Core ML and Data Science
+scikit-learn==1.3.2
+xgboost==2.0.2
+pandas==2.1.4
+numpy==1.24.3
+scipy==1.11.4
+
+# Time Series Analysis
+statsmodels==0.14.0
+prophet==1.1.4
+
+# Deep Learning (Optional)
+torch==2.1.1
+torchvision==0.16.1
+
+# Database
+psycopg2-binary==2.9.9
+pymongo==4.6.0
+sqlalchemy==2.0.23
+timescaledb==0.1.1
+
+# API Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+
+# Pipeline Orchestration
+apache-airflow==2.7.3
+prefect==2.14.11
+
+# Data Processing
+openpyxl==3.1.2
+requests==2.31.0
+beautifulsoup4==4.12.2
+
+# Utilities
+python-dotenv==1.0.0
+pytest==7.4.3
+black==23.11.0
+flake8==6.1.0
+
+# Visualization
+matplotlib==3.8.2
+seaborn==0.13.0
+plotly==5.17.0
+
+# Geospatial
+geopandas==0.14.1
+folium==0.15.1
+
+# Additional ML and Data Processing
+joblib==1.3.2
+motor==3.3.2
+redis==5.0.1
+
+# Web Scraping and Data Fetching
+aiohttp==3.9.1
+beautifulsoup4==4.12.2
+lxml==4.9.3
+html5lib==1.1

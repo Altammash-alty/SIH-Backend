@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  # PostgreSQL with TimescaleDB extension
+  postgres:
+    image: timescale/timescaledb:latest-pg15
+    environment:
+      POSTGRES_DB: health_surveillance
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - health_network
+
+  # MongoDB for unstructured data
+  mongodb:
+    image: mongo:7.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: health_reports
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - health_network
+
+  # Redis for caching
+  redis:
+    image: redis:7.2-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - health_network
+
+  # FastAPI Application
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/health_surveillance
+      - MONGODB_URL=mongodb://admin:password@mongodb:27017/health_reports?authSource=admin
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - postgres
+      - mongodb
+      - redis
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    networks:
+      - health_network
+
+  # Airflow Webserver
+  airflow-webserver:
+    image: apache/airflow:2.7.3
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://postgres:password@postgres:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'True'
+      _AIRFLOW_DB_MIGRATE: 'True'
+      _AIRFLOW_WWW_USER_CREATE: 'True'
+      _AIRFLOW_WWW_USER_USERNAME: admin
+      _AIRFLOW_WWW_USER_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+    depends_on:
+      - postgres
+    networks:
+      - health_network
+
+volumes:
+  postgres_data:
+  mongodb_data:
+
+networks:
+  health_network:
+    driver: bridge
